@@ -1,0 +1,26 @@
+title: Chord Charts
+baseurl: /lilypond-chord-charts
+url: https://jeandeaual.github.io
+repository: jeandeaual/lilypond-chord-charts
+lang: en-US
+show_downloads: false
+# Build settings
+theme: jekyll-theme-minimal
+plugins: []
+defaults:
+  - scope:
+      path: "a4"
+    values:
+      a4: true
+  - scope:
+      path: "letter"
+    values:
+      letter: true
+  - scope:
+      path: "svg"
+    values:
+      svg: true
+  - scope:
+      path: "midi"
+    values:
+      midi: true

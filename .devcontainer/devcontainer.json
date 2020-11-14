@@ -1,0 +1,24 @@
+{
+    "name": "Jekyll",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "VARIANT": "2.7"
+        }
+    },
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "rebornix.Ruby",
+        "sissel.shopify-liquid"
+    ],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [4000],
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "bundle install",
+    // Connect as a non-root user.
+    "remoteUser": "vscode"
+}
