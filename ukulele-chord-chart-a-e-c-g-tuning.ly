@@ -1,13 +1,13 @@
 \version "2.21.80"
 
-\include "predefined-guitar-fretboards.ly"
+\include "predefined-ukulele-fretboards.ly"
 
 \header {
-  title = "Guitar Chord Chart (E–A–D–G–B–e Tuning)"
+  title = "Ukulele Chord Chart (A–E–C–G Tuning)"
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   keywords = #(string-join '(
     "music"
-    "guitar"
+    "ukelele"
     "chords"
   ) ", ")
   tagline = ##f
@@ -23,10 +23,12 @@ chordTypes = \chordmode {
   c:m
   c:aug
   c:dim
-  c:dim7
   c:7
   c:maj7
   c:m7
+  c:6
+  c:sus2
+  c:sus4
   c:9
   \break
 }
@@ -57,7 +59,7 @@ chordSequence = {
   }
 
   \new FretBoards {
-    \set Staff.stringTunings = #guitar-tuning
+    \set Staff.stringTunings = #ukulele-tuning
     \chordSequence
   }
 

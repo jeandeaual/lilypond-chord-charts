@@ -24,18 +24,30 @@ jobs:
         run: rm build/.gitignore
       - name: Make the output directories
         run: mkdir -p build/{a4,letter,svg}
-      - name: Build A4 PDF
+      - name: Build A4 PDF (guitar)
         uses: docker://jeandeaual/lilypond:latest
         with:
           args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"a4\" -o build/a4 guitar-chord-chart-standard-tuning.ly
-      - name: Build Letter PDF
+      - name: Build Letter PDF (guitar)
         uses: docker://jeandeaual/lilypond:latest
         with:
           args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"letter\" -o build/letter guitar-chord-chart-standard-tuning.ly
-      - name: Build SVG
+      - name: Build SVG (guitar)
         uses: docker://jeandeaual/lilypond:latest
         with:
           args: lilypond --svg -dno-point-and-click -dpaper-size=\"a4\" -o build/svg guitar-chord-chart-standard-tuning.ly
+      - name: Build A4 PDF (ukulele)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"a4\" -o build/a4 ukulele-chord-chart-a-e-c-g-tuning.ly
+      - name: Build Letter PDF (ukulele)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"letter\" -o build/letter ukulele-chord-chart-a-e-c-g-tuning.ly
+      - name: Build SVG (ukulele)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond --svg -dno-point-and-click -dpaper-size=\"a4\" -o build/svg ukulele-chord-chart-a-e-c-g-tuning.ly
       - name: Get short SHA
         id: slug
         run: echo "::set-output name=sha7::$(echo ${GITHUB_SHA} | cut -c1-7)"
