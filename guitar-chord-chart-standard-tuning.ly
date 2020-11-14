@@ -3,7 +3,7 @@
 \include "predefined-guitar-fretboards.ly"
 
 \header {
-  title = "Guitar Chord Chart (E-A-D-G Tuning)"
+  title = "Guitar Chord Chart (E–A–D–G–B–e Tuning)"
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   keywords = #(string-join '(
     "music"
