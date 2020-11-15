@@ -7,7 +7,7 @@
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   keywords = #(string-join '(
     "music"
-    "ukelele"
+    "ukulele"
     "chords"
   ) ", ")
   tagline = ##f
