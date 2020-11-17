@@ -58,6 +58,7 @@ chordSequence = {
 
   \new FretBoards {
     \set Staff.stringTunings = #guitar-tuning
+    \override FretBoard.fret-diagram-details.finger-code = #'in-dot
     \chordSequence
   }
 

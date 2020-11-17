@@ -60,6 +60,7 @@ chordSequence = {
 
   \new FretBoards {
     \set Staff.stringTunings = #ukulele-tuning
+    \override FretBoard.fret-diagram-details.finger-code = #'in-dot
     \chordSequence
   }
 

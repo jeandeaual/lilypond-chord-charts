@@ -61,6 +61,7 @@ chordSequence = {
 
   \new FretBoards {
     \set Staff.stringTunings = #mandolin-tuning
+    \override FretBoard.fret-diagram-details.finger-code = #'in-dot
     \chordSequence
   }
 
