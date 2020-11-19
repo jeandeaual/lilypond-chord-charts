@@ -36,20 +36,15 @@ chordTypes = \chordmode {
 chordSequence = {
                    \chordTypes
   \transpose c cis \chordTypes
-  \transpose c des \chordTypes
   \transpose c d   \chordTypes
   \transpose c dis \chordTypes
-  \transpose c ees \chordTypes
   \transpose c e   \chordTypes
   \transpose c f   \chordTypes
   \transpose c fis \chordTypes
-  \transpose c ges \chordTypes
   \transpose c g   \chordTypes
   \transpose c gis \chordTypes
-  \transpose c aes \chordTypes
   \transpose c a   \chordTypes
   \transpose c ais \chordTypes
-  \transpose c bes \chordTypes
   \transpose c b   \chordTypes
 }
 
