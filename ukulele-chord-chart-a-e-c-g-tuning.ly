@@ -14,8 +14,8 @@
 }
 
 \paper {
-  markup-system-spacing.padding = #5
-  system-system-spacing.padding = #8
+  markup-system-spacing.padding = #6
+  system-system-spacing.padding = #3
 }
 
 chordTypes = \chordmode {
@@ -56,11 +56,6 @@ chordSequence = {
   \new FretBoards {
     \set Staff.stringTunings = #ukulele-tuning
     \override FretBoard.fret-diagram-details.finger-code = #'in-dot
-    \chordSequence
-  }
-
-  \new Staff {
-    \override Staff.TimeSignature.transparent = ##t
     \chordSequence
   }
 >>
