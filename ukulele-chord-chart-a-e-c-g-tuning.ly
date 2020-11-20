@@ -14,8 +14,7 @@
 }
 
 \paper {
-  markup-system-spacing.padding = #6
-  system-system-spacing.padding = #3
+  markup-system-spacing.padding = #8
 }
 
 chordTypes = \chordmode {
