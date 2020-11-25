@@ -3,8 +3,12 @@
 \include "predefined-mandolin-fretboards.ly"
 
 \header {
-  title = "Mandolin Chord Chart (G–D–A–E Tuning)"
+  title = "Mandolin Chord Chart"
+  subtitle = "G–D–A–E Tuning"
+  pdftitle = \markup \concat { \fromproperty #'header:title "(" \fromproperty #'header:subtitle ")" }
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
+  enteredby = "Alexis Jeandeau"
+  author = \enteredby
   keywords = #(string-join '(
     "music"
     "mandolin"

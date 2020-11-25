@@ -3,8 +3,12 @@
 \include "predefined-ukulele-fretboards.ly"
 
 \header {
-  title = "Ukulele Chord Chart (A–E–C–G Tuning)"
+  title = "Ukulele Chord Chart"
+  subtitle = "A–E–C–G Tuning"
+  pdftitle = \markup \concat { \fromproperty #'header:title " (" \fromproperty #'header:subtitle ")" }
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
+  enteredby = "Alexis Jeandeau"
+  author = \enteredby
   keywords = #(string-join '(
     "music"
     "ukulele"

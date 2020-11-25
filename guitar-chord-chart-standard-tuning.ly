@@ -3,8 +3,12 @@
 \include "predefined-guitar-fretboards.ly"
 
 \header {
-  title = "Guitar Chord Chart (E–A–D–G–B–e Tuning)"
+  title = "Guitar Chord Chart"
+  subtitle = "E–A–D–G–B–e Tuning"
+  pdftitle = \markup \concat { \fromproperty #'header:title "(" \fromproperty #'header:subtitle ")" }
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
+  enteredby = "Alexis Jeandeau"
+  author = \enteredby
   keywords = #(string-join '(
     "music"
     "guitar"
