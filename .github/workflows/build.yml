@@ -12,7 +12,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Make the output directories
-        run: mkdir -p build/{a4,letter,svg}
+        run: mkdir -p build/{a4,letter,a3,tabloid,svg}
       - name: Build A4 PDF (guitar)
         uses: docker://jeandeaual/lilypond:latest
         with:
@@ -21,6 +21,14 @@ jobs:
         uses: docker://jeandeaual/lilypond:latest
         with:
           args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"letter\" -o build/letter guitar-chord-chart-standard-tuning.ly
+      - name: Build A3 PDF (guitar)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"a3\" -o build/a3 guitar-chord-chart-standard-tuning.ly
+      - name: Build Tabloid PDF (guitar)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"tabloid\" -o build/tabloid guitar-chord-chart-standard-tuning.ly
       - name: Build SVG (guitar)
         uses: docker://jeandeaual/lilypond:latest
         with:
@@ -33,6 +41,14 @@ jobs:
         uses: docker://jeandeaual/lilypond:latest
         with:
           args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"letter\" -o build/letter ukulele-chord-chart-a-e-c-g-tuning.ly
+      - name: Build A3 PDF (ukulele)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"a3\" -o build/a3 ukulele-chord-chart-a-e-c-g-tuning.ly
+      - name: Build Tabloid PDF (ukulele)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"tabloid\" -o build/tabloid ukulele-chord-chart-a-e-c-g-tuning.ly
       - name: Build SVG (ukulele)
         uses: docker://jeandeaual/lilypond:latest
         with:
@@ -45,6 +61,14 @@ jobs:
         uses: docker://jeandeaual/lilypond:latest
         with:
           args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"letter\" -o build/letter mandolin-chord-chart-standard-tuning.ly
+      - name: Build A3 PDF (mandolin)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"a3\" -o build/a3 mandolin-chord-chart-standard-tuning.ly
+      - name: Build Tabloid PDF (mandolin)
+        uses: docker://jeandeaual/lilypond:latest
+        with:
+          args: lilypond -dno-point-and-click -dembed-source-code -dpaper-size=\"tabloid\" -o build/tabloid mandolin-chord-chart-standard-tuning.ly
       - name: Build SVG (mandolin)
         uses: docker://jeandeaual/lilypond:latest
         with:
@@ -62,6 +86,16 @@ jobs:
         with:
           name: letter-${{ steps.slug.outputs.sha7 }}
           path: build/letter
+      - name: Upload A3 artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: a3-${{ steps.slug.outputs.sha7 }}
+          path: build/a3
+      - name: Upload Tabloid artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: tabloid-${{ steps.slug.outputs.sha7 }}
+          path: build/tabloid
       - name: Upload SVG artifact
         uses: actions/upload-artifact@v1.0.0
         with:
