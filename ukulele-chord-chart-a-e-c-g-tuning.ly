@@ -18,8 +18,55 @@
 }
 
 \paper {
-  markup-system-spacing.padding = #4
-  left-margin = 15\mm
+  % See https://github.com/lilypond/lilypond/blob/stable/2.22/scm/paper.scm#L141
+  #(define paper-size
+     (cond ((and (= (/ paper-width mm) 210)
+                 (= (/ paper-height mm) 297))
+             "A4")
+           ((and (= (/ paper-width mm) 297)
+                 (= (/ paper-height mm) 420))
+             "A3")
+           ((and (= (/ paper-width in) 8.5)
+                 (= (/ paper-height in) 11))
+             "Letter")
+           ((and (= (/ paper-width in) 11)
+                 (= (/ paper-height in) 17))
+             "Tabloid")
+           (else
+             "")))
+  #(define markup-system-spacing
+     (cond ((equal? paper-size "A4")
+             '((basic-distance . 0)
+               (minimum-distance . 0)
+               (padding . 6)
+               (stretchability . 0)))
+           ((equal? paper-size "Letter")
+             '((basic-distance . 0)
+               (minimum-distance . 0)
+               (padding . 2)
+               (stretchability . 0)))
+           (else
+             '((basic-distance . 0)
+               (minimum-distance . 0)
+               (padding . 4)
+               (stretchability . 0)))))
+  #(define system-system-spacing
+     (cond ((equal? paper-size "Letter")
+             '((basic-distance . 0)
+               (minimum-distance . 0)
+               (padding . 1)
+               (stretchability . 0)))
+           ((equal? paper-size "Tabloid")
+             '((basic-distance . 0)
+               (minimum-distance . 0)
+               (padding . 2)
+               (stretchability . 0)))
+           (else
+             '((basic-distance . 0)
+               (minimum-distance . 0)
+               (padding . 1.5)
+               (stretchability . 0)))))
+  left-margin = 18\mm
   bottom-margin = 0\mm
 }
 
@@ -55,13 +102,22 @@ chordSequence = {
 
 <<
   \new ChordNames {
+    \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                       (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                               4)
+                                             (else
+                                               1.5)))
     \chordSequence
   }
 
   \new FretBoards {
     \set Staff.stringTunings = #ukulele-tuning
     \override FretBoard.fret-diagram-details.finger-code = #'in-dot
-    \override FretBoard.size = #'1.2
+    \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                  (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                          2)
+                                        (else
+                                          1.2)))
     \chordSequence
   }
 >>
