@@ -4,6 +4,8 @@ layout: default
 
 {% assign a4_files = site.static_files | where: "a4", true | where: "extname", ".pdf" | sort: "basename" %}
 {% assign letter_files = site.static_files | where: "letter", true | where: "extname", ".pdf" | sort: "basename" %}
+{% assign a3_files = site.static_files | where: "a3", true | where: "extname", ".pdf" | sort: "basename" %}
+{% assign tabloid_files = site.static_files | where: "tabloid", true | where: "extname", ".pdf" | sort: "basename" %}
 {% assign svg_files = site.static_files | where: "svg", true | where: "extname", ".svg" | sort: "basename" %}
 {% assign midi_files = site.static_files | where: "midi", true | where: "extname", ".midi" | sort: "basename" %}
 
@@ -19,6 +21,20 @@ layout: default
 {% if letter_files != empty %}
 ## Letter
     {% for file in letter_files %}
+* [{{ file.name }}]({{ file.path | relative_url }})
+    {% endfor %}
+{% endif %}
+
+{% if a3_files != empty %}
+## A3
+    {% for file in a3_files %}
+* [{{ file.name }}]({{ file.path | relative_url }})
+    {% endfor %}
+{% endif %}
+
+{% if tabloid_files != empty %}
+## Tabloid
+    {% for file in tabloid_files %}
 * [{{ file.name }}]({{ file.path | relative_url }})
     {% endfor %}
 {% endif %}

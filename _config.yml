@@ -17,6 +17,14 @@ defaults:
     values:
       letter: true
   - scope:
+      path: "a3"
+    values:
+      a3: true
+  - scope:
+      path: "tabloid"
+    values:
+      tabloid: true
+  - scope:
       path: "svg"
     values:
       svg: true
