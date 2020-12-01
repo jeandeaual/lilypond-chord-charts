@@ -5026,6 +5026,20 @@ c0 10 8 19 18 19s19 -9 19 -19v-145l83 31v158c0 10 9 19 19 19s18 -9 18 -19v-145l3
 </g>
 </g>
 <g color="rgb(0%, 0%, 0%)">
+<g transform="translate(22.4602, 73.3370)">
+<circle stroke-linejoin="round" stroke-linecap="round" fill="currentColor" stroke="currentColor" stroke-width="0.0600" r="0.5100"/>
+</g>
+</g>
+<g color="rgb(100.0000%, 100.0000%, 100.0000%)">
+<g transform="scale(0.9021, 0.9021)">
+<g transform="translate(24.5901, 81.6877)">
+<text font-family="sans-serif" font-size="1.1220" text-anchor="start" fill="currentColor">
+<tspan>2</tspan>
+</text>
+</g>
+</g>
+</g>
+<g color="rgb(0%, 0%, 0%)">
 <g transform="translate(23.6602, 72.1370)">
 <circle stroke-linejoin="round" stroke-linecap="round" fill="currentColor" stroke="currentColor" stroke-width="0.0600" r="0.5100"/>
 </g>
@@ -5043,11 +5057,6 @@ c0 10 8 19 18 19s19 -9 19 -19v-145l83 31v158c0 10 9 19 19 19s18 -9 18 -19v-145l3
 <rect x="-0.0300" y="-0.1500" width="3.6600" height="0.1800" ry="0.0300" fill="currentColor"/>
 </g>
 <g transform="translate(19.6505, 69.9170)">
-<text font-family="sans-serif" font-size="1.0559" text-anchor="start" fill="currentColor">
-<tspan>O</tspan>
-</text>
-</g>
-<g transform="translate(22.0505, 69.9170)">
 <text font-family="sans-serif" font-size="1.0559" text-anchor="start" fill="currentColor">
 <tspan>O</tspan>
 </text>
