@@ -6,6 +6,7 @@
   title = "Ukulele Chord Chart"
   subtitle = "G–C–E–A Tuning"
   pdftitle = \markup \concat { \fromproperty #'header:title " (" \fromproperty #'header:subtitle ")" }
+  subject = "Chart for the most common chords for the ukulele (G–C–E–A tuning)."
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   enteredby = "Alexis Jeandeau"
   author = \enteredby
@@ -100,27 +101,25 @@ chordSequence = {
   \transpose c b   \chordTypes
 }
 
-<<
-  \new ChordNames {
-    \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
-                                       (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
-                                               4)
-                                             (else
-                                               1.5)))
-    \chordSequence
-  }
+chordNames = {
+  \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                      (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                              4)
+                                            (else
+                                              1.5)))
+  \chordSequence
+}
 
-  \new FretBoards {
-    \set Staff.stringTunings = #ukulele-tuning
-    \override FretBoard.fret-diagram-details.finger-code = #'in-dot
-    \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
-                                  (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
-                                          2)
-                                        (else
-                                          1.2)))
-    \chordSequence
-  }
->>
+fretBoards = {
+  \set Staff.stringTunings = #ukulele-tuning
+  \override FretBoard.fret-diagram-details.finger-code = #'in-dot
+  \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                        2)
+                                      (else
+                                        1.2)))
+  \chordSequence
+}
 
 \layout {
   indent = 0\mm
@@ -128,4 +127,26 @@ chordSequence = {
     \Score
     \remove "Bar_number_engraver"
   }
+}
+
+\book {
+  <<
+    \new ChordNames \chordNames
+    \new FretBoards \fretBoards
+  >>
+}
+
+\book {
+  \bookOutputSuffix "fr"
+
+  \header {
+    title = "Accords de ukulélé"
+    subtitle = "Accordage Sol–Do–Mi–La"
+    subject = "Doigtés d’accords communs pour ukulélé (accordage Sol–Do–Mi–La)."
+  }
+
+  <<
+    \new ChordNames \with { \frenchChords } \chordNames
+    \new FretBoards \fretBoards
+  >>
 }

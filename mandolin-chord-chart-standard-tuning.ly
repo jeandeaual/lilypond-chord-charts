@@ -6,6 +6,7 @@
   title = "Mandolin Chord Chart"
   subtitle = "G–D–A–E Tuning"
   pdftitle = \markup \concat { \fromproperty #'header:title " (" \fromproperty #'header:subtitle ")" }
+  subject = "Chart for the most common chords for the mandolin (G–D–A–E tuning)."
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   enteredby = "Alexis Jeandeau"
   author = \enteredby
@@ -91,29 +92,27 @@ chordSequence = {
   \transpose c b   \chordTypes
 }
 
-<<
-  \new ChordNames {
-    \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
-                                       (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
-                                               4)
-                                             (else
-                                               1.5)))
-    \chordSequence
-  }
+chordNames = {
+  \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                      (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                              4)
+                                            (else
+                                              1.5)))
+  \chordSequence
+}
 
-  \new FretBoards {
-    \set Staff.stringTunings = #mandolin-tuning
-    \override FretBoard.fret-diagram-details.finger-code = #'in-dot
-    \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
-                                  (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
-                                          1.7)
-                                        ((equal? paper-size "Letter")
-                                          1)
-                                        (else
-                                          1.1)))
-    \chordSequence
-  }
->>
+fretBoards = {
+  \set Staff.stringTunings = #mandolin-tuning
+  \override FretBoard.fret-diagram-details.finger-code = #'in-dot
+  \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                        1.7)
+                                      ((equal? paper-size "Letter")
+                                        1)
+                                      (else
+                                        1.1)))
+  \chordSequence
+}
 
 \layout {
   indent = 0\mm
@@ -121,4 +120,26 @@ chordSequence = {
     \Score
     \remove "Bar_number_engraver"
   }
+}
+
+\book {
+  <<
+    \new ChordNames \chordNames
+    \new FretBoards \fretBoards
+  >>
+}
+
+\book {
+  \bookOutputSuffix "fr"
+
+  \header {
+    title = "Accords de mandoline"
+    subtitle = "Accordage Sol–Ré–La–Mi"
+    subject = "Doigtés d’accords communs pour mandoline (accordage Sol–Ré–La–Mi)."
+  }
+
+  <<
+    \new ChordNames \with { \frenchChords } \chordNames
+    \new FretBoards \fretBoards
+  >>
 }

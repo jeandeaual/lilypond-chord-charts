@@ -6,6 +6,7 @@
   title = "Guitar Chord Chart"
   subtitle = "E–A–D–G–B–e Tuning"
   pdftitle = \markup \concat { \fromproperty #'header:title " (" \fromproperty #'header:subtitle ")" }
+  subject = "Chart for the most common chords for the guitar (E–A–D–G–B–e tuning)."
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   enteredby = "Alexis Jeandeau"
   author = \enteredby
@@ -98,34 +99,54 @@ chordSequence = {
   \transpose c b   \chordTypes
 }
 
-<<
-  \new ChordNames {
-    \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
-                                       (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
-                                               4)
-                                             (else
-                                               1.5)))
-    \chordSequence
-  }
-
-  \new FretBoards {
-    \set Staff.stringTunings = #guitar-tuning
-    \override FretBoard.fret-diagram-details.finger-code = #'in-dot
-    \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
-                                  (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
-                                          2)
-                                        ((equal? paper-size "Letter")
-                                          1.2)
-                                        (else
-                                          1.3)))
-    \chordSequence
-  }
->>
-
 \layout {
   indent = 0\mm
   \context {
     \Score
     \remove "Bar_number_engraver"
   }
+}
+
+chordNames = {
+  \override ChordName.font-size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                    (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                            4)
+                                          (else
+                                            1.5)))
+  \chordSequence
+}
+
+fretBoards = {
+  \set Staff.stringTunings = #guitar-tuning
+  \override FretBoard.fret-diagram-details.finger-code = #'in-dot
+  \override FretBoard.size = #(let ((paper-size (ly:output-def-lookup $defaultpaper 'paper-size)))
+                                (cond ((or (equal? paper-size "A3") (equal? paper-size "Tabloid"))
+                                        2)
+                                      ((equal? paper-size "Letter")
+                                        1.2)
+                                      (else
+                                        1.3)))
+  \chordSequence
+}
+
+\book {
+  <<
+    \new ChordNames \chordNames
+    \new FretBoards \fretBoards
+  >>
+}
+
+\book {
+  \bookOutputSuffix "fr"
+
+  \header {
+    title = "Accords de guitare"
+    subtitle = "Accordage Mi–La–Ré–Sol–Si–Mi"
+    subject = "Doigtés d’accords communs pour guitare (accordage Mi–La–Ré–Sol–Si–Mi)."
+  }
+
+  <<
+    \new ChordNames \with { \frenchChords } \chordNames
+    \new FretBoards \fretBoards
+  >>
 }
