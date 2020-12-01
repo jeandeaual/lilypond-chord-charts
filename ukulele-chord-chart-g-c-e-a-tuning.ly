@@ -2,6 +2,11 @@
 
 \include "predefined-ukulele-fretboards.ly"
 
+% E minor is set to "o;4-3;o;2-1;" by default
+\storePredefinedDiagram #default-fret-table \chordmode {e:m}
+                        #ukulele-tuning
+                        "o;4-3;3-2;2-1;"
+
 \header {
   title = "Ukulele Chord Chart"
   subtitle = "G–C–E–A Tuning"
