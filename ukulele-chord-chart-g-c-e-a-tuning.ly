@@ -4,7 +4,7 @@
 
 \header {
   title = "Ukulele Chord Chart"
-  subtitle = "A–E–C–G Tuning"
+  subtitle = "G–C–E–A Tuning"
   pdftitle = \markup \concat { \fromproperty #'header:title " (" \fromproperty #'header:subtitle ")" }
   source = "https://lilypond.org/doc/stable/Documentation/notation/predefined-fretboard-diagrams"
   enteredby = "Alexis Jeandeau"
